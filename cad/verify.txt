@@ -1,0 +1,55 @@
+=== closed / armed ===
+part                 valid   volume cm3   bbox z
+Plinth               True       778.8        0..40    
+Floor                True       411.7       37..40    
+Body                 True      2462.8       40..990   
+DoorFrame            True       131.2       90..780   
+WallBrackets         True       284.4      250..870   
+ThroatCollar         True       187.3      950..992   
+TopFlap              True       785.4      978..998   
+FlapHinge            True        18.1      992..1004  
+FlapLatch            True         1.7      992..1008  
+TrapDoor             True       416.0      800..820   
+TrapHinge            True        47.5      802..816   
+TrapSprings          True         7.4      797..819   
+TrapStops            True       117.1      820..824   
+FrontDoor            True       856.3      102..768   
+DoorHinges           True        43.2      148..762   
+DogBolts             True         1.8      196..674   
+LockBar              True        68.3      120..735   
+CamLock              True        12.5      409..451   
+
+clamp TopFlap / FlapHinge : 1185.1 mm3
+clamp TopFlap / FlapLatch : 480.0 mm3
+clamp TrapDoor / TrapHinge : 3273.0 mm3
+clamp FrontDoor / DoorHinges : 2771.1 mm3
+steel mass approx 52.1 kg
+
+=== open (flap back, trap tripped, door swung) ===
+part                 valid   volume cm3   bbox z
+Plinth               True       778.8        0..40    
+Floor                True       411.7       37..40    
+Body                 True      2462.8       40..990   
+DoorFrame            True       131.2       90..780   
+WallBrackets         True       284.4      250..870   
+ThroatCollar         True       187.3      950..992   
+TopFlap              True       785.4      996..1382  
+FlapHinge            True        18.1      994..1004  
+FlapLatch            True         1.7     1375..1384  
+TrapDoor             True       416.0      525..821   
+TrapHinge            True        47.5      802..816   
+TrapSprings          True         7.4      797..819   
+TrapStops            True       117.1      820..824   
+FrontDoor            True       856.3      102..768   
+DoorHinges           True        43.2      148..762   
+DogBolts             True         1.8      196..674   
+LockBar              True        68.3      142..757   
+CamLock              True        12.5      419..451   
+
+clamp TopFlap / FlapHinge : 1185.1 mm3
+clamp TopFlap / FlapLatch : 480.0 mm3
+clamp TrapDoor / TrapHinge : 3273.0 mm3
+clamp TrapDoor / TrapSprings : 54.7 mm3
+clamp TrapDoor / TrapStops : 1.7 mm3
+clamp FrontDoor / DoorHinges : 2771.1 mm3
+steel mass approx 52.1 kg
