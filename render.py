@@ -31,6 +31,9 @@ SHOTS = [
     ("ParcelDropBoxOpen",    "parcelbox_open_back",  "Rear"),
     ("ParcelDropBoxSection", "parcelbox_section",    "Isometric"),
     ("ParcelDropBoxSection", "parcelbox_section_side", "Right"),
+    ("ParcelDropBoxTrap",    "parcelbox_trap",       "Isometric"),
+    ("ParcelDropBoxTrap",    "parcelbox_trap_side",  "Right"),
+    ("ParcelDropBoxLock",    "parcelbox_lock",       "Isometric"),
 ]
 
 

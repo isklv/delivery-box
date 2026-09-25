@@ -8,6 +8,8 @@ Creates three documents:
   ParcelDropBox         - closed / armed (rest state)
   ParcelDropBoxOpen     - flap back, trap tripped, retrieval door swung
   ParcelDropBoxSection  - closed box cut on the X mid-plane (internals)
+  ParcelDropBoxTrap     - close-up crop on the one-way trap
+  ParcelDropBoxLock     - close-up crop on the cam lock and locking bar
 
 Security concept
 ----------------
@@ -431,6 +433,32 @@ def build_section(src):
     return doc
 
 
+DETAILS = [
+    # name, clip box: a cut-away crop framed on one mechanism
+    ("ParcelDropBoxTrap", (-60, -60, 735, W / 2, D + 80, 900)),
+    ("ParcelDropBoxLock", (280, 1, 330, 390, 40, 545)),
+]
+
+
+def build_details(src):
+    """Cut-away crops framed on the trap and on the lock, for close-ups."""
+    docs = []
+    for name, clip in DETAILS:
+        doc = App.newDocument(name)
+        knife = box(*clip)
+        for n in PARTS:
+            piece = src.getObject(n).Shape.common(knife)
+            if piece.Volume < 1.0:
+                continue
+            o = doc.addObject("Part::Feature", n)
+            o.Shape = piece
+            if hasattr(o, "ViewObject") and o.ViewObject:
+                o.ViewObject.ShapeColor = COLORS.get(n, GREY)
+        doc.recompute()
+        docs.append(doc)
+    return docs
+
+
 def verify(doc, log):
     log.append("part                 valid   volume cm3   bbox z")
     shapes = {}
@@ -462,6 +490,7 @@ def main():
     closed = build_closed(App.newDocument("ParcelDropBox"))
     opened = build_open(closed)
     build_section(closed)
+    build_details(closed)
     if os.environ.get("PDB_NO_SAVE"):
         return                      # rendering only: documents are enough
     cad = os.path.join(OUT, "cad")

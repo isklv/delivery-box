@@ -14,6 +14,8 @@ except through the owner's locked door.
   wall brackets.
 
 Built parametrically in [FreeCAD](https://www.freecad.org).
+Russian version with a detailed walk-through of the mechanisms:
+[README.ru.md](README.ru.md).
 
 ## How the protection works
 
@@ -67,13 +69,25 @@ Built parametrically in [FreeCAD](https://www.freecad.org).
 | `LockBar` | Vertical bar with four lugs and the cam yoke — the locking element |
 | `CamLock` | Concealed cylinder; a quarter turn lifts the bar 22 mm |
 
+## Drawings
+
+Dimensioned sheets, generated from the same model by `drawings.py`:
+
+| Sheet | |
+|-------|-|
+| [01 General arrangement](drawings/01_general_arrangement.svg) | front / right / plan, overall sizes |
+| [02 Trap mechanism](drawings/02_trap_mechanism.svg) | sections B-B and C-C, swing envelope, spring notes |
+| [03 Lock mechanism](drawings/03_lock_mechanism.svg) | door from inside, keep section D-D, cam section E-E |
+
 ## Files
 
 - `cad/ParcelDropBox.FCStd` — FreeCAD document, closed / armed
 - `cad/ParcelDropBoxOpen.FCStd` — flap back, trap tripped, door swung open
 - `cad/ParcelDropBox.step` — STEP export of all 18 parts
 - `cad/verify.txt` — solid validity, interference and mass report, both states
-- `build_box.py` — parametric FreeCAD script (all three states)
+- `drawings/*.svg` — dimensioned drawings
+- `build_box.py` — parametric FreeCAD script (all states)
+- `drawings.py` — generates the drawing sheets
 - `render.py` — regenerates `images/`
 - `images/` — rendered views
 
@@ -91,6 +105,12 @@ Section on the X mid-plane — trap, springs, frame keeps and lock bar:
 |-----------|------|
 | ![section](images/parcelbox_section.png) | ![section side](images/parcelbox_section_side.png) |
 
+Mechanism close-ups — the one-way trap and the four-point lock:
+
+| Trap, cut away | Trap, side | Lock, behind the door skin |
+|----------------|------------|----------------------------|
+| ![trap](images/parcelbox_trap.png) | ![trap side](images/parcelbox_trap_side.png) | ![lock](images/parcelbox_lock.png) |
+
 Open — flap back, trap pushed open by a parcel, retrieval door swung wide:
 
 | Isometric | Front | Back |
@@ -101,6 +121,7 @@ Open — flap back, trap pushed open by a parcel, retrieval door swung wide:
 
 ```sh
 FreeCADCmd build_box.py                     # geometry, STEP and verify.txt
+FreeCADCmd drawings.py                      # dimensioned sheets in drawings/
 
 # images (headless); keep stdin open, FreeCAD's console quits on EOF
 sleep 400 | LIBGL_ALWAYS_SOFTWARE=1 \
